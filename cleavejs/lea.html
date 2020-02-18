@@ -7,7 +7,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
-    <script src="https://nosir.github.io/cleave.js/dist/cleave-phone.au-cn.js"></script>
+    <!--Das hier ist die eingebettete Cleave Library-->
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.5.3/dist/cleave.min.js"></script>
+    <!--Das ist für die Telefonnummer, funktioniert aber nicht LOL-->
+    <script src="../cleave-phone.ch.js"></script>
     <style>
         *{
             font-family: sans-serif;
@@ -15,7 +18,7 @@
         input{
             padding: 10px;
             font-size: 1rem;
-            width: 30%;
+            width: 100%;
         }
     </style>
 </head>
@@ -23,21 +26,19 @@
 <body>
     <h1>Cleave.js</h1>
     <a href="https://github.com/nosir/cleave.js/blob/master/doc/doc.md">Dokumentation</a>
-    <script src="https://cdn.jsdelivr.net/npm/google-libphonenumber@3.2.6/dist/libphonenumber.min.js"></script>
-    <script src="cleave-phone.us.js"></script>
+    <br>
+    <a href="https://nosir.github.io/cleave.js/">Hier kann man Beispiele ansehen</a>
     
     <h3>Beispiele</h3>
     <!--Input-Felder-->
     <h4>Kreditkarte</h4>
     <input class="creditcard" placeholder="Hier Kreditkartennummer eingeben">
     <h4>Datum</h4>
-    <input class="date" placeholder="Gib hier ein Datum ein DD/MM/YYYY">
-    <h4>Custom</h4>
+    <input type="text" class="date" placeholder="Gib hier ein Datum ein DD/MM/YYYY">
+    <h4>Custom (hier z.B. eine Telefonnummer)</h4>
     <input class="custom" placeholder="Gib hier was ein im Format">
     <h4>Time</h4>
     <input class="time" placeholder="Gib hier eine Zeit ein">
-    <h4>Telefonnummer</h4>
-    <input class="phone" placeholder="Gib hier eine Telefonnummer ein">
     
     <!--Script-->
     <script>
@@ -57,10 +58,10 @@
 
         //Custom
         new Cleave('.custom', {
-            blocks: [2, 3, 1],
-            delimiter: ' - ',
+            blocks: [3, 2, 3, 2, 2],
+            delimiter: ' ',
             //delimiterLazyShow: true,
-            //prefix: '$',
+            prefix: '+41',
             //noImmediatePrefix: true,
             //uppercase: true,
             //lowercase: true,
@@ -71,13 +72,6 @@
         new Cleave('.time', {
             time: true,
             timePattern: ['h', 'm'],
-        });
-
-        //Telefonnummer
-        //funtktioniert nicht, der ganze Code dannach klappt nicht
-        new Cleave('.phone', {
-            phone: true,
-            phoneRegionCode: 'CN'
         });
         
     </script>
