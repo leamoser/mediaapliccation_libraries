@@ -16,10 +16,10 @@
         <h1>Cleave.js</h1>
          <h2> Datum </h2>
         <input style="width:20%" class="my-input" placeholder="Hier kommt das Datum dd/mm/YYYY">
-        <h2> Handynummer </h2>
-        <input style="width:20%" class="my-number" placeholder="Hier kommt die Handynummer">
-        <h2> Uhrzeit </h2>
+        <h2> Custom </h2>
         <input style="width:20%" class="custom" placeholder="Custom">
+        <h2> Kreditkarte </h2>
+        <input style="width:20%" class="my-card" placeholder="Gib hier die Kreditkarte an">
         
         
         <script>
@@ -30,15 +30,20 @@
                 dateMax: '2099-12-31',
 
             });
-        
-            
             
                 new Cleave('.custom', {
                 blocks: [2, 5, 5],
                 delimiter: "_",
             });
         
-
+              new Cleave('.my-card', {
+                creditCard: true,
+                creditCardStrictMode: true
+            });  
+            
+            
+            
+            
         </script>
         
         
