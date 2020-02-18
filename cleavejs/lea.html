@@ -1,22 +1,86 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h1>Hallo Code-Mensche</h1>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://nosir.github.io/cleave.js/dist/cleave-phone.au-cn.js"></script>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        input{
+            padding: 10px;
+            font-size: 1rem;
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cleave.js</h1>
+    <a href="https://github.com/nosir/cleave.js/blob/master/doc/doc.md">Dokumentation</a>
+    <script src="https://cdn.jsdelivr.net/npm/google-libphonenumber@3.2.6/dist/libphonenumber.min.js"></script>
+    <script src="cleave-phone.us.js"></script>
+    
+    <h3>Beispiele</h3>
+    <!--Input-Felder-->
+    <h4>Kreditkarte</h4>
+    <input class="creditcard" placeholder="Hier Kreditkartennummer eingeben">
+    <h4>Datum</h4>
+    <input class="date" placeholder="Gib hier ein Datum ein DD/MM/YYYY">
+    <h4>Custom</h4>
+    <input class="custom" placeholder="Gib hier was ein im Format">
+    <h4>Time</h4>
+    <input class="time" placeholder="Gib hier eine Zeit ein">
+    <h4>Telefonnummer</h4>
+    <input class="phone" placeholder="Gib hier eine Telefonnummer ein">
+    
+    <!--Script-->
+    <script>
+        //Kreditkarte
+        new Cleave('.creditcard', {
+            creditCard: true,
+        });
+
+        //Datum
+        new Cleave('.date', {
+            date: true,
+            datePattern: ['d', 'm', 'Y'],
+            dateMin: '2000-01-01', //funktioniert nur in diesem Format
+            dateMax: '2020-12-31', //funktioniert nur in diesem Format
+            delimiter: '. ',
+        });
+
+        //Custom
+        new Cleave('.custom', {
+            blocks: [2, 3, 1],
+            delimiter: ' - ',
+            //delimiterLazyShow: true,
+            //prefix: '$',
+            //noImmediatePrefix: true,
+            //uppercase: true,
+            //lowercase: true,
+            //numericOnly: true,
+        });
+
+        //Time
+        new Cleave('.time', {
+            time: true,
+            timePattern: ['h', 'm'],
+        });
+
+        //Telefonnummer
+        //funtktioniert nicht, der ganze Code dannach klappt nicht
+        new Cleave('.phone', {
+            phone: true,
+            phoneRegionCode: 'CN'
+        });
         
-        <script src="" async defer></script>
-    </body>
+    </script>
+</body>
+
 </html>
